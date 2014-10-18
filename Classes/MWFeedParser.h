@@ -50,7 +50,6 @@
 @class MWFeedParser;
 
 // Types
-typedef enum { ConnectionTypeAsynchronously, ConnectionTypeSynchronously } ConnectionType;
 typedef enum { ParseTypeFull, ParseTypeItemsOnly, ParseTypeInfoOnly } ParseType;
 typedef enum { FeedTypeUnknown, FeedTypeRSS, FeedTypeRSS1, FeedTypeAtom } FeedType;
 
@@ -73,10 +72,8 @@ typedef enum { FeedTypeUnknown, FeedTypeRSS, FeedTypeRSS1, FeedTypeAtom } FeedTy
 	id <MWFeedParserDelegate> __unsafe_unretained delegate;
 	
 	// Connection
-	NSURLConnection *urlConnection;
-	NSMutableData *asyncData;
+    NSURLSession *urlSession;
 	NSString *asyncTextEncodingName;
-	ConnectionType connectionType;
 	
 	// Parsing
 	ParseType feedParseType;
@@ -113,9 +110,6 @@ typedef enum { FeedTypeUnknown, FeedTypeRSS, FeedTypeRSS1, FeedTypeAtom } FeedTy
 
 // Whether to parse feed info & all items, just feed info, or just feed items
 @property (nonatomic) ParseType feedParseType;
-
-// Set whether to download asynchronously or synchronously
-@property (nonatomic) ConnectionType connectionType;
 
 // Whether parsing was stopped
 @property (nonatomic, readonly, getter=isStopped) BOOL stopped;

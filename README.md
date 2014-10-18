@@ -2,6 +2,10 @@
 
 MWFeedParser is an Objective-C framework for downloading and parsing RSS (1.* and 2.*) and Atom web feeds. It is a very simple and clean implementation that reads the following information from a web feed:
 
+####Updated by Joy
+Replace NSURLConnection with NSURLSession, remove the synchronous mode when downloading data. (2014-10-18)
+
+
 #### Feed Information
 - Title
 - Link
@@ -51,11 +55,6 @@ Set the parsing type. Options are `ParseTypeFull`, `ParseTypeInfoOnly`, `ParseTy
 
 	// Parse the feeds info (title, link) and all feed items
 	feedParser.feedParseType = ParseTypeFull;
-	
-Set whether the parser should connect and download the feed data synchronously or asynchronously. Note, this only affects the download of the feed data, not the parsing operation itself.
-
-	// Connection type
-	feedParser.connectionType = ConnectionTypeSynchronously;
 	
 Initiate parsing:
 
